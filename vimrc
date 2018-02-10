@@ -19,6 +19,8 @@ set tabstop=4
 set winwidth=110
 set cursorline
 set showmatch
+set splitbelow splitright
+set wildmode=longest,list,full
 
 filetype plugin on
 syntax on
@@ -52,9 +54,9 @@ Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'zxqfl/tabnine-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
 
 :runtime! ftplugin/man.vim
 
@@ -73,16 +75,17 @@ noremap j gj
 noremap k gk
 noremap Y ^y$
 
+nnoremap <leader>m :MaximizerToggle!<CR>
 
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-noremap <C-H> :tabp<CR>
-noremap <C-L> :tabn<CR>
-noremap <C-J> :tabc<CR>
-noremap <C-K> :tabe<CR>
+"noremap <C-H> :tabp<CR>
+"noremap <C-L> :tabn<CR>
+"noremap <C-J> :tabc<CR>
+"noremap <C-K> :tabe<CR>
 
 nmap <leader>gd <Plug>(coc-definition)
 
@@ -90,6 +93,9 @@ nnoremap <silent> <Leader>> :exe "vertical resize +25"<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize -25"<CR>
 nnoremap <leader>dr $T=dt;i
 nnoremap <leader>r f=ll
+
+vnoremap <leader>p "_dP
+nnoremap <leader>s :!clear && shellcheck %<CR>
 
 nnoremap <CR> :nohlsearch<cr>
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -125,3 +131,5 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
 let g:vimspector_enable_mappings = 'HUMAN'
+
+
