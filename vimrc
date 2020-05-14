@@ -3,8 +3,17 @@ set expandtab
 set hlsearch
 set ignorecase
 set incsearch
+set nobackup
 set nocompatible
+set noerrorbells
+set noswapfile
+set nu
 set smartcase
+set smartindent
+set shiftwidth=4
+set softtabstop=4
+set undodir=~/.vim/undodir
+set undofile
 set tabstop=4
 set winwidth=110
 
