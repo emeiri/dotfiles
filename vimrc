@@ -8,6 +8,7 @@ set nocompatible
 set noerrorbells
 set noswapfile
 set nu
+set relativenumber
 set smartcase
 set smartindent
 set shiftwidth=4
@@ -30,7 +31,7 @@ syntax on
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'branch':'release'}
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
@@ -56,6 +57,7 @@ inoremap <silent> <Up> <ESC><Up>
 inoremap <silent> <Down> <ESC><Down>
 noremap j gj
 noremap k gk
+noremap Y ^y$
 
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -95,10 +97,13 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_max_files=0
+let g:ctrlp_use_caching = 0
+let g:ctrlp_max_depth = 40
+
 
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
-let g:ctrlp_use_caching = 0
