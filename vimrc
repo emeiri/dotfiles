@@ -48,9 +48,13 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'lyuts/vim-rtags'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+
 call plug#end()
 
 let mapleader = " "
+nnoremap <F1> :ls<cr>
 nnoremap <F2> :FZF<cr>
 nnoremap <c-s-f> :Ack
 inoremap <silent> <Up> <ESC><Up>
@@ -58,6 +62,7 @@ inoremap <silent> <Down> <ESC><Down>
 noremap j gj
 noremap k gk
 noremap Y ^y$
+
 
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
