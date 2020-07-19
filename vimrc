@@ -17,6 +17,8 @@ set undodir=~/.vim/undodir
 set undofile
 set tabstop=4
 set winwidth=110
+set cursorline
+set showmatch
 
 filetype plugin on
 syntax on
@@ -34,7 +36,7 @@ Plug 'neoclide/coc.nvim', {'branch':'release'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdcommenter'
@@ -50,12 +52,15 @@ Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'zxqfl/tabnine-vim'
+
+:runtime! ftplugin/man.vim
 
 call plug#end()
 
 let mapleader = " "
-nnoremap <F1> :ls<cr>
-nnoremap <F2> :FZF<cr>
+nnoremap <F1> :Buffers<cr>
+nnoremap <F2> :GFiles<cr>
 nnoremap <c-s-f> :Ack
 inoremap <silent> <Up> <ESC><Up>
 inoremap <silent> <Down> <ESC><Down>
@@ -78,6 +83,8 @@ nmap <leader>gd <Plug>(coc-definition)
 
 nnoremap <silent> <Leader>> :exe "vertical resize +25"<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize -25"<CR>
+nnoremap <leader>dr $T=dt;i
+nnoremap <leader>r f=ll
 
 nnoremap <CR> :nohlsearch<cr>
 let g:UltiSnipsExpandTrigger="<tab>"
