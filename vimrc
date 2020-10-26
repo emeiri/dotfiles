@@ -53,6 +53,8 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'zxqfl/tabnine-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'puremourning/vimspector'
 
 :runtime! ftplugin/man.vim
 
@@ -61,6 +63,9 @@ call plug#end()
 let mapleader = " "
 nnoremap <F1> :Buffers<cr>
 nnoremap <F2> :GFiles<cr>
+nnoremap <F3> :cprevious<cr>
+nnoremap <F4> :cnext<cr>
+nnoremap <F7> :make<cr>
 nnoremap <c-s-f> :Ack
 inoremap <silent> <Up> <ESC><Up>
 inoremap <silent> <Down> <ESC><Down>
@@ -119,3 +124,4 @@ let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+let g:vimspector_enable_mappings = 'HUMAN'
