@@ -19,6 +19,8 @@ set tabstop=4
 set winwidth=110
 set cursorline
 set showmatch
+set splitbelow splitright
+set wildmode=longest,list,full
 
 filetype plugin on
 syntax on
@@ -41,19 +43,19 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-syntastic/syntastic'
-Plug 'junegunn/vim-easy-align'
-Plug 'nvie/vim-flake8'
-Plug 'airblade/vim-gitgutter'
-Plug 'frazrepo/vim-rainbow'
-" Plug 'ycm-core/YouCompleteMe'
-"Plug 'Valloric/YouCompleteMe'
-Plug 'lyuts/vim-rtags'
-Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
-Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
-Plug 'zxqfl/tabnine-vim'
+Plug 'nvie/vim-flake8'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'szw/vim-maximizer'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'frazrepo/vim-rainbow'
+Plug 'lyuts/vim-rtags'
+Plug 'kshenoy/vim-signature'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
 Plug 'puremourning/vimspector'
 
 :runtime! ftplugin/man.vim
@@ -73,23 +75,26 @@ noremap j gj
 noremap k gk
 noremap Y ^y$
 
+nnoremap <leader>m :MaximizerToggle!<CR>
 
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-noremap <C-H> :tabp<CR>
-noremap <C-L> :tabn<CR>
-noremap <C-J> :tabc<CR>
-noremap <C-K> :tabe<CR>
+"noremap <C-H> :tabp<CR>
+"noremap <C-L> :tabn<CR>
+"noremap <C-J> :tabc<CR>
+"noremap <C-K> :tabe<CR>
 
 nmap <leader>gd <Plug>(coc-definition)
 
 nnoremap <silent> <Leader>> :exe "vertical resize +25"<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize -25"<CR>
 nnoremap <leader>dr $T=dt;i
+vnoremap <leader>p "_dP
 nnoremap <leader>r f=ll
+nnoremap <leader>s :!clear && shellcheck %<CR>
 
 nnoremap <c-s> :BLines<cr>
 
