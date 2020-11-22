@@ -127,3 +127,4 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
 let g:vimspector_enable_mappings = 'HUMAN'
+set term=xterm-256color
