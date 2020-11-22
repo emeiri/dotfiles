@@ -91,6 +91,8 @@ nnoremap <silent> <Leader>< :exe "vertical resize -25"<CR>
 nnoremap <leader>dr $T=dt;i
 nnoremap <leader>r f=ll
 
+nnoremap <c-s> :BLines<cr>
+
 nnoremap <CR> :nohlsearch<cr>
 let g:UltiSnipsExpandTrigger="<tab>"
 
