@@ -24,6 +24,9 @@ set wildmode=longest,list,full
 
 filetype plugin indent on
 syntax on
+set backspace=start,eol,indent
+set hidden
+set path=.,**
 
 
 
