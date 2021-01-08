@@ -22,7 +22,7 @@ set showmatch
 set splitbelow splitright
 set wildmode=longest,list,full
 
-filetype plugin on
+filetype plugin indent on
 syntax on
 
 
