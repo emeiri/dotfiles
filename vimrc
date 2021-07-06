@@ -22,58 +22,82 @@ set showmatch
 set splitbelow splitright
 set wildmode=longest,list,full
 
-filetype plugin on
+filetype plugin indent on
 syntax on
+set backspace=start,eol,indent
+set hidden
+set path+=**
 
-
-
-
-" if has('mouse')
+"if has('mouse')
 "	set mouse=a
 " endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'mileszs/ack.vim'
-Plug 'neoclide/coc.nvim', {'branch':'release'}
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'gruvbox-community/gruvbox'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'preservim/nerdcommenter'
-Plug 'vim-syntastic/syntastic'
-Plug 'SirVer/ultisnips'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-commentary'
-Plug 'nvie/vim-flake8'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'szw/vim-maximizer'
-Plug 'severin-lemaignan/vim-minimap'
-Plug 'frazrepo/vim-rainbow'
-Plug 'lyuts/vim-rtags'
-Plug 'kshenoy/vim-signature'
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-surround'
-Plug 'puremourning/vimspector'
+Plug 'https://github.com/mileszs/ack.vim'
+Plug 'https://github.com/rking/ag.vim'
+Plug 'https://github.com/neoclide/coc.nvim', {'branch':'release'}
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+Plug 'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'https://github.com/junegunn/fzf.vim'
+Plug 'https://github.com/gruvbox-community/gruvbox'
+Plug 'https://github.com/vim-scripts/indentpython.vim'
+Plug 'https://github.com/itchyny/lightline.vim'
+Plug 'https://github.com/preservim/nerdcommenter'
+Plug 'https://github.com/vim-syntastic/syntastic'
+Plug 'https://github.com/SirVer/ultisnips'
+Plug 'https://github.com/junegunn/vim-easy-align'
+Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/nvie/vim-flake8'
+Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'https://github.com/airblade/vim-gitgutter'
+Plug 'https://github.com/szw/vim-maximizer'
+Plug 'https://github.com/severin-lemaignan/vim-minimap'
+Plug 'https://github.com/frazrepo/vim-rainbow'
+Plug 'https://github.com/lyuts/vim-rtags'
+Plug 'https://github.com/kshenoy/vim-signature'
+Plug 'https://github.com/honza/vim-snippets'
+Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/pelodelfuego/vim-swoop'
+Plug 'https://github.com/puremourning/vimspector'
+Plug 'https://github.com/nvim-lua/popup.nvim'
+Plug 'https://github.com/nvim-lua/plenary.nvim'
+"Plug 'https://github.com/nvim-telescope/telescope.nvim'
+"Plug 'https://github.com/nvim-telescope/telescope-fzy-native.nvim'
 
 :runtime! ftplugin/man.vim
 
 call plug#end()
 
+function ExecShell()
+    :w
+    :!clear<cr>
+endfunction
+
 let mapleader = " "
+
+map <esc>OH <home>
+cmap <esc>OH <home>
+imap <esc>OH <home>
+map <esc>OF <end>
+cmap <esc>OF <end>
+imap <esc>OF <end>
+
 nnoremap <F1> :Buffers<cr>
 nnoremap <F2> :GFiles<cr>
 nnoremap <F3> :cprevious<cr>
 nnoremap <F4> :cnext<cr>
+nnoremap <F9> :mak<cr>
+nnoremap <C-F6> :w \|!!<cr>
+"nnoremap <C-F6> :call ExecShell()<cr>
+"nnoremap <C-F6> :!<up>
 nnoremap <F7> :make<cr>
-nnoremap <c-s-f> :Ack
+nnoremap <c-s-f> :Rg 
 inoremap <silent> <Up> <ESC><Up>
 inoremap <silent> <Down> <ESC><Down>
 noremap j gj
 noremap k gk
 noremap Y ^y$
+nn yaf ?function<CR>$V%y<CR>
 
 nnoremap <leader>m :MaximizerToggle!<CR>
 
@@ -91,6 +115,8 @@ nmap <leader>gd <Plug>(coc-definition)
 
 nnoremap <silent> <Leader>> :exe "vertical resize +25"<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize -25"<CR>
+nnoremap <leader>c :cclose<CR>
+nnoremap <leader>o :vert copen<cr>
 nnoremap <leader>dr $T=dt;i
 vnoremap <leader>p "_dP
 nnoremap <leader>r f=ll
@@ -98,7 +124,7 @@ nnoremap <leader>s :!clear && shellcheck %<CR>
 
 nnoremap <c-s> :BLines<cr>
 
-nnoremap <CR> :nohlsearch<cr>
+"nnoremap <CR> :nohlsearch<cr>
 let g:UltiSnipsExpandTrigger="<tab>"
 
 let g:rainbow_active = 1
@@ -134,4 +160,13 @@ let g:netrw_winsize = 25
 
 let g:vimspector_enable_mappings = 'HUMAN'
 
-set term=xterm-256color
+set term=screen-256color
+
+if executable('ag')
+      let g:ackprg = 'ag --vimgrep'
+endif
+
+set statusline+=%F
+
+let g:coc_disable_startup_warning = 1
+let g:coc_node_path = "~/node-v14.17.0-linux-x64/bin/node"
