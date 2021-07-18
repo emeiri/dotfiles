@@ -39,6 +39,7 @@ Plug 'https://github.com/neoclide/coc.nvim', {'branch':'release'}
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'https://github.com/junegunn/fzf.vim'
+Plug 'https://github.com/chengzeyi/fzf-preview.vim'
 Plug 'https://github.com/gruvbox-community/gruvbox'
 Plug 'https://github.com/vim-scripts/indentpython.vim'
 Plug 'https://github.com/itchyny/lightline.vim'
@@ -68,7 +69,7 @@ Plug 'https://github.com/nvim-lua/plenary.nvim'
 
 call plug#end()
 
-function ExecShell()
+function ExecShell1()
     :w
     :!clear<cr>
 endfunction
@@ -82,8 +83,8 @@ map <esc>OF <end>
 cmap <esc>OF <end>
 imap <esc>OF <end>
 
-nnoremap <F1> :Buffers<cr>
-nnoremap <F2> :GFiles<cr>
+nnoremap <F1> :FZFBuffers<cr>
+nnoremap <F2> :FZFGFiles<cr>
 nnoremap <F3> :cprevious<cr>
 nnoremap <F4> :cnext<cr>
 nnoremap <F9> :mak<cr>
@@ -91,7 +92,7 @@ nnoremap <C-F6> :w \|!!<cr>
 "nnoremap <C-F6> :call ExecShell()<cr>
 "nnoremap <C-F6> :!<up>
 nnoremap <F7> :make<cr>
-nnoremap <c-s-f> :Rg 
+nnoremap <c-s-f> :FZFAg 
 inoremap <silent> <Up> <ESC><Up>
 inoremap <silent> <Down> <ESC><Down>
 noremap j gj
@@ -122,7 +123,7 @@ vnoremap <leader>p "_dP
 nnoremap <leader>r f=ll
 nnoremap <leader>s :!clear && shellcheck %<CR>
 
-nnoremap <c-s> :BLines<cr>
+nnoremap <c-a> :FZFBLines<cr>
 
 "nnoremap <CR> :nohlsearch<cr>
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -170,3 +171,5 @@ set statusline+=%F
 
 let g:coc_disable_startup_warning = 1
 let g:coc_node_path = "~/node-v14.17.0-linux-x64/bin/node"
+
+let g:fzf_command_prefix = 'FZF'
