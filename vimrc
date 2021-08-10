@@ -30,7 +30,7 @@ set path+=**
 
 "if has('mouse')
 "	set mouse=a
-" endif
+"endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/mileszs/ack.vim'
@@ -68,11 +68,6 @@ Plug 'https://github.com/nvim-lua/plenary.nvim'
 :runtime! ftplugin/man.vim
 
 call plug#end()
-
-function ExecShell1()
-    :w
-    :!clear<cr>
-endfunction
 
 let mapleader = " "
 
@@ -130,8 +125,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 
 let g:rainbow_active = 1
 
-set background=dark
-colorscheme gruvbox
 
 " Enable folding
 set foldmethod=indent
@@ -173,3 +166,8 @@ let g:coc_disable_startup_warning = 1
 let g:coc_node_path = "~/node-v14.17.0-linux-x64/bin/node"
 
 let g:fzf_command_prefix = 'FZF'
+set background=dark
+colorscheme gruvbox
+
+autocmd! VimLeave * mksession! ~/.session.vim 
+autocmd! VimEnter * source ~/.session.vim
